@@ -3,15 +3,9 @@
 @import './fonts.scss';
 
 :root {
-  font-family: 'PPNeueMachina', inter, -apple-system, system-ui, 'Segoe UI', Helvetica,
-    'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: $white;
+  background: $black;
+  font-family: 'IBMPlexSans', system-ui, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,7 +15,6 @@
 
 #app,
 body {
-  background: $ape-blue;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -29,60 +22,86 @@ body {
   justify-content: flex-start;
   align-content: flex-start;
   align-items: center;
+  padding: 0;
+  margin: 0;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'IBMPlexSansBold', system-ui, sans-serif;
+  margin-block-start: 0;
+  margin-block-end: 20px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+h1 { font-size: 42px; }
+h2 { font-size: 30px; }
+h3 { font-size: 24px; }
+h4 { font-size: 22px; }
+h5 { font-size: 20px; }
+h6 { font-size: 18px; }
+
+p {
+  color: $white;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 10px;
+}
+
+.graphic {
+  width: 100%;
+  padding: 0;
+
+  img,
+  svg {
+    width: 350px;
+    object-fit: cover;
+    overflow: hidden;
+    @include breakpoint($break-ssm) {
+      width: 100%;
+    }
+  }
+}
+
+button,
+.link-button {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  height: 35px;
+  min-width: 220px;
+  font-size: 16px;
+  font-weight: 600;
+  color: $white;
+  background: rgb(17, 16, 16);
+  margin-right: 10px;
+  text-decoration: none;
+  border: 1px solid transparent;  
+  border-radius: 12px;
+  padding: 8px 24px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: $white;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: border-color 0.6s;
+
+  &:hover {
+    border-color: rgb(69, 73, 77);
+  }
+  &:focus, 
+  &:focus-visible {
+    outline: 2px auto -webkit-focus-ring-color;
+  }
 }
 
 .card {
-  padding: 2em;
+  height: 96%;
+  padding: 2%;
+  background: rgb(17, 16, 16);
+  border-radius: 12px;
+  margin: 0;
+  overflow: scroll;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.hide-mobile {
+  display: none;
 }
 
-
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.show-mobile {
+  display: inline;
 }
