@@ -4,11 +4,11 @@
       <div class="column width-40">
         <h1>Welcome <br />to the Ape Inn</h1>
         <p>
-          Stake, claim and browse your favourite Ape NFTs all in one place, stop
-          monkeying around ...
+          Stake and claim your $APE or browse all your favourite Apes, stop
+          monkeying around and visit the Ape Inn.
         </p>
         <p>
-          The ape Inn offers Apecoin Governance - DAO tooling, dashboards,
+          The Ape Inn offers Apecoin Governance - DAO tooling, dashboards,
           analytics and so much more, make sure to check out our merch section
           for some more monkey business.
         </p>

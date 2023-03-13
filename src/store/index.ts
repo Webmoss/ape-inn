@@ -29,7 +29,7 @@ export const useStore = defineStore({
     balance: 0,
     accountNfts: [],
     errorCode: 0,
-    errorStatus: 0,
+    errorStatus: "",
     errorMessage: "",
     loading: false,
     searchChainId: "all",
@@ -107,13 +107,13 @@ export const useStore = defineStore({
     updateBalance(balance: number) {
       this.balance = balance;
     },
-    addAccountNfts(...tokens) {
-      this.accountNfts.push(...tokens);
+    addAccountNfts(tokens: any) {
+      this.accountNfts = tokens;
     },
     setErrorCode(value: number) {
       this.errorCode = value;
     },
-    setErrorStatus(value: number) {
+    setErrorStatus(value: string) {
       this.errorStatus = value;
     },
     setErrorMessage(value: string) {
@@ -134,8 +134,8 @@ export const useStore = defineStore({
     updateSearchImage(searchImage: string) {
       this.searchImage = searchImage;
     },
-    addSearchResults(...tokens) {
-      this.searchResults.push(...tokens);
+    addSearchResults(tokens: any) {
+      this.searchResults = tokens;
     },
     clearSearchResults() {
       this.searchChainId = "all";
@@ -144,22 +144,22 @@ export const useStore = defineStore({
       this.searchImage = "";
       this.searchResults = [];
     },
-    addBaycTokens(tokens) {
+    addBaycTokens(tokens: any) {
       this.baycTokens = tokens;
     },
-    addMaycTokens(tokens) {
+    addMaycTokens(tokens: any) {
       this.maycTokens = tokens;
     },
-    addBakcTokens(tokens) {
+    addBakcTokens(tokens: any) {
       this.bakcTokens = tokens;
     },
-    addOthersideTokens(tokens) {
+    addOthersideTokens(tokens: any) {
       this.othersideTokens = tokens;
     },
-    addSewerpassTokens(tokens) {
+    addSewerpassTokens(tokens: any) {
       this.sewerpassTokens = tokens;
     },
-    addChemistryTokens(tokens) {
+    addChemistryTokens(tokens: any) {
       this.chemistryTokens = tokens;
     },
 

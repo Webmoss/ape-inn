@@ -74,17 +74,16 @@
             <a title="Merch" class="link-button" @click="setView('intro')"
               >Home</a
             >
-
+            <a title="Merch" class="link-button" @click="setView('gallery')"
+              >Search</a
+            >
             <a title="Stake Apes" class="link-button" @click="setView('stake')"
               >Stake</a
             >
-            <a title="Swap" class="link-button" @click="setView('swap')"
-              >Swap</a
-            >
           </p>
           <p>
-            <a title="Merch" class="link-button" @click="setView('gallery')"
-              >Search</a
+            <a title="Swap" class="link-button" @click="setView('swap')"
+              >Swap</a
             >
             <a title="Merch" class="link-button" @click="setView('merch')"
               >Merch</a
@@ -233,7 +232,7 @@
           1,
           account.value
         );
-        store.addAccountNfts(...accountNfts);
+        store.addAccountNfts(accountNfts);
       } catch (error) {
         console.log(`Error fetching tokens, please refresh to try again!`);
       }
@@ -286,11 +285,12 @@
 
         .left {
           width: 20%;
+          min-width: 300px;
           height: 96%;
           display: flex;
           flex-direction: column;
           align-content: center;
-          padding: 2% 1% 2% 3%;
+          padding: 2% 2% 2% 3%;
 
           @include breakpoint($break-ssm) {
             width: 96%;
@@ -447,6 +447,9 @@
       }
 
       #footer {
+        position: fixed;
+        bottom: 5px;
+        left: 100px;
         height: 40px;
         display: flex;
         justify-content: center;

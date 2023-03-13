@@ -8,7 +8,7 @@ const infuraSecret = import.meta.env.VITE_INFURA_API_SECRET;
 
 /* Apecoin & NFTs Contract Addresses */
 // const apecoinAddress = import.meta.env.VITE_APECOIN_CONTRACT_ADDRESS;
-// const baycAddress = import.meta.env.VITE_BAYC_CONTRACT_ADDRESS;
+const baycAddress = import.meta.env.VITE_BAYC_CONTRACT_ADDRESS;
 // const maycAddress = import.meta.env.VITE_MUTANT_CONTRACT_ADDRESS;
 // const bakcAddress = import.meta.env.VITE_BAKC_CONTRACT_ADDRESS;
 // const othersideAddress = import.meta.env.VITE_OTHERSIDE_CONTRACT_ADDRESS;
@@ -48,7 +48,7 @@ export default class authNFT {
         },
         params: {
           owner: accountAddress,
-          asset_contract_address: contractAddress,
+          asset_contract_address: baycAddress,
           token_ids: tokenIds,
         },
       });
@@ -70,7 +70,7 @@ export default class authNFT {
           params: {
             module: "account",
             action: "tokenbalance",
-            contractaddress: contractAddress,
+            contractaddress: baycAddress,
             address: accountAddress,
             tag: "latest",
             apikey: polygonScapAPI,
@@ -86,7 +86,7 @@ export default class authNFT {
         params: {
           module: "account",
           action: "tokenbalance",
-          contractaddress: contractAddress,
+          contractaddress: baycAddress,
           address: accountAddress,
           tag: "latest",
           apikey: etherScapAPI,

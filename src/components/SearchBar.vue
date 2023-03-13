@@ -23,7 +23,7 @@
         <select v-model="chain" class="search-chain">
           <option
             v-for="option in options"
-            :key="option.key"
+            :key="option.value"
             :value="option.label"
           >
             {{ option.text }}
@@ -163,15 +163,16 @@
   <Transition name="slide-fade">
     <section v-show="show" id="search-results">
       <div class="search-results-row">
-        <h2>Search Results</h2>
         <div
           v-if="(!loading && errorCode) || errorStatus || errorMessage"
           class="row error-box"
         >
-          <!-- <div class="error-status">{{ errorCode }} : {{ errorStatus }}</div> -->
+          <div v-if="errorCode && errorStatus" class="error-status">
+            {{ errorCode }} : {{ errorStatus }}
+          </div>
           <div class="error-message">
             {{ errorMessage
-            }}<template v-if="errorStatus === 404"
+            }}<template v-if="errorStatus === '404'"
               ><br />Please make sure you have entered the correct contract
               address<br />
               or try a different name or image url</template
@@ -197,35 +198,26 @@
   import { useStore } from "../store";
 
   /* Components */
-  import NftCard from "../components/NftCard.vue";
   import SearchCard from "../components/SearchCard.vue";
 
   /* Init Store Values and Methods */
   const store = useStore();
-  const {
-    loading,
-    errorCode,
-    errorStatus,
-    errorMessage,
-    searchResults,
-    topTokens,
-    latestTokens,
-    trendingTokens,
-  } = storeToRefs(store);
+  const { loading, errorCode, errorStatus, errorMessage, searchResults } =
+    storeToRefs(store);
 
   const chain = ref("all");
   const options = ref([
     { value: 0, label: "all", text: "all" },
     { value: 1, label: "ethereum", text: "ethereum" },
-    // { value: 5, label: "ethereum-testnet", text: "Ethereum Testnet" },
+    { value: 5, label: "ethereum-testnet", text: "Ethereum Testnet" },
     { value: 137, label: "polygon", text: "polygon" },
-    // { value: 80001, label: "polygon-testnet", text: "Mumbai Testnet" },
+    { value: 80001, label: "polygon-testnet", text: "Mumbai Testnet" },
     { value: 10, label: "optimism", text: "optimism" },
-    // { value: 69, label: "optimism-testnet", text: "Optimism Testnet" },
+    { value: 69, label: "optimism-testnet", text: "Optimism Testnet" },
     { value: 42161, label: "arbitrum", text: "arbitrum" },
-    // { value: 421611, label: "arbitrum-testnet", text: "Arbitrum Testnet" },
+    { value: 421611, label: "arbitrum-testnet", text: "Arbitrum Testnet" },
     { value: 43114, label: "avalanche", text: "avalanche" },
-    // { value: 421611, label: "avalanche-testnet", text: "Arbitrum Testnet" },
+    { value: 421611, label: "avalanche-testnet", text: "Arbitrum Testnet" },
   ]);
 
   /* Show Search Results Panel */
@@ -235,7 +227,7 @@
   /* 🦸🏻 NFT Port Search Defaults */
   const contract = ref("");
   const contractFilter = ref("");
-  const tokenId = ref(null);
+  const tokenId = ref("");
   const name = ref("");
   const image = ref("");
   const duplicateUrl = ref("");
@@ -246,100 +238,16 @@
   const threshold = ref(0.1);
 
   /**
-   * Check if our Wallet is Connected to 🦊 Metamask
-   */
-  async function checkIfWalletIsConnected() {
-    try {
-      /*
-       * First make sure we have access to window.ethereum
-       */
-      const { ethereum } = window;
-      if (!ethereum) {
-        console.log(`Please connect 🦊 Metamask to continue!`);
-        return;
-      }
-      /* Get our Current Account */
-      const accounts = await ethereum.request({ method: "eth_accounts" });
-
-      /* Update our Current Account in the Store */
-      if (accounts.length !== 0) {
-        store.updateAccount(accounts[0]);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  /**
-   * Fetch NFTs using 🦸🏻 NFT Port API for our Marketplace Example
-   */
-  async function fetchTokens() {
-    if (topTokens.value.length === 0) {
-      try {
-        const topTokens = await store.contractNftSearch(
-          "0x7Bd29408f11D2bFC23c34f18275bBf23bB716Bc7",
-          "ethereum",
-          "metadata",
-          "true",
-          10,
-          1
-        );
-        if (topTokens.nfts && topTokens.total > 0) {
-          store.addTopTokens(...topTokens.nfts);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    if (latestTokens.value.length === 0) {
-      try {
-        const latestTokens = await store.contractNftSearch(
-          "0x1A92f7381B9F03921564a437210bB9396471050C",
-          "ethereum",
-          "metadata",
-          "true",
-          15,
-          1
-        );
-        if (latestTokens.nfts && latestTokens.total > 0) {
-          store.addLatestTokens(...latestTokens.nfts);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    if (trendingTokens.value.length === 0) {
-      try {
-        const trendingTokens = await store.contractNftSearch(
-          "0x19b86299c21505cdf59cE63740B240A9C822b5E4",
-          "ethereum",
-          "metadata",
-          "true",
-          10,
-          1
-        );
-        if (trendingTokens.nfts) {
-          store.addTrendingTokens(...trendingTokens.nfts);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }
-
-  /**
    * NFTPort Search
    */
   /* Fetch new NFT audio/media by Category or Name */
-  async function searchTokens(type) {
+  async function searchTokens(type: string) {
     /* Set Loading */
     store.setLoading(true);
 
     /* Clear our last response from Pinia Store */
-    store.setErrorCode(null);
-    store.setErrorStatus(null);
+    store.setErrorCode(0);
+    store.setErrorStatus("");
     store.setErrorMessage("");
 
     /* Open the Search Panel */
@@ -378,7 +286,7 @@
         );
 
         if (results.search_results && results.search_results.length > 0) {
-          store.addSearchResults(...results.search_results);
+          store.addSearchResults(results.search_results);
         }
         store.setLoading(false);
       } catch (error) {
@@ -406,7 +314,7 @@
         console.log(
           "%c🦸🏻 NFT Port Search by Image URL : %s",
           stylesResults,
-          JSON.stringify(results, 0, 4)
+          JSON.stringify(results)
         );
 
         if (
@@ -414,7 +322,7 @@
           results.similar_nfts &&
           results.similar_nfts.length > 0
         ) {
-          store.addSearchResults(...results.search_results);
+          store.addSearchResults(results.search_results);
         }
         if (!results.is_similar) {
           store.setErrorCode(404);
@@ -459,7 +367,7 @@
           results.similar_nfts &&
           results.similar_nfts.length > 0
         ) {
-          store.addSearchResults(...results.search_results);
+          store.addSearchResults(results.search_results);
         }
         if (!results.is_similar) {
           store.setErrorCode(404);
@@ -476,8 +384,8 @@
 
   /* Clear our Search Results */
   function clearSearch() {
-    store.setErrorCode(null);
-    store.setErrorStatus(null);
+    store.setErrorCode(0);
+    store.setErrorStatus("");
     store.setErrorMessage("");
     chain.value = "all";
     contract.value = "";
@@ -498,8 +406,6 @@
       left: 0,
       behavior: "smooth",
     });
-    await checkIfWalletIsConnected();
-    await fetchTokens();
   });
 </script>
 

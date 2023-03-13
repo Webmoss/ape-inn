@@ -1,16 +1,5 @@
 <template>
-  <div
-    v-if="
-      (token && token.cached_file_url) ||
-      token.mint_date ||
-      token.name ||
-      token.description ||
-      token.chain ||
-      token.contract ||
-      token.contract_address
-    "
-    class="search-nft"
-  >
+  <div v-if="token" class="search-nft">
     <div v-if="token.name && token.cached_file_url" class="search-nft-image">
       <img
         v-if="token.cached_file_url"
