@@ -9,9 +9,6 @@
     <div v-else-if="token.file_url && token.file_url" class="nft-image">
       <img :src="getUrlProtocol(token.file_url)" />
     </div>
-    <div v-else-if="token.file_url && token.file_url" class="nft-image">
-      <img :src="getUrlProtocol(token.file_url)" />
-    </div>
     <div v-if="!token.token_id" class="nft-title">
       Token ID: {{ token.token_id }}
     </div>
@@ -30,14 +27,31 @@
   </div>
 </template>
 <script lang="ts" setup>
-  defineProps<{ token: object }>();
+  /* Typescript Interfaces */
+  interface Metadata {
+    image: string;
+    name?: string;
+    title?: string;
+    description?: string;
+  }
+
+  interface Token {
+    metadata: Metadata;
+    token_id?: string;
+    cached_file_url?: string;
+    file_url?: string;
+  }
+
+  defineProps<{ token?: Token }>();
 
   function getUrlProtocol(url: string) {
     let protocol = url.endsWith("jpg") ? 5 : 0;
+
     if (protocol == 0) protocol = url.startsWith("http://") ? 1 : 0;
     if (protocol == 0) protocol = url.startsWith("https://") ? 2 : 0;
     if (protocol == 0) protocol = url.startsWith("ipfs://") ? 3 : 0;
     if (protocol == 0) protocol = url !== "" ? 4 : 0;
+
     switch (protocol) {
       case 1:
         return url;

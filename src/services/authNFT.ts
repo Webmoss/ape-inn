@@ -24,10 +24,6 @@ const baycAddress = import.meta.env.VITE_BAYC_CONTRACT_ADDRESS;
 // console.log("Chemistry Address : ", chemistryAddress);
 
 export default class authNFT {
-  constructor() {
-    this.endpoint = new URL("https://ipfs.infura.io:5001");
-  }
-
   /**
    * @param {String} accountAddress
    * @param {String} tokenId
@@ -54,10 +50,7 @@ export default class authNFT {
       });
       const data = response.data;
       console.log("Opensea Response Data: ", data);
-      console.log("Opensea Response Status: ", response.status(200));
-      return response.status(200).json({
-        isAuthenticated: data.assets && data.assets.length > 0,
-      });
+      return { isAuthenticated: data.assets && data.assets.length > 0 };
     } else {
       /**
        * @dev TODO: Need to add a check here for the chain and switch the api

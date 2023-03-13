@@ -74,7 +74,7 @@
             <a title="Merch" class="link-button" @click="setView('intro')"
               >Home</a
             >
-            <a title="Merch" class="link-button" @click="setView('gallery')"
+            <a title="Merch" class="link-button" @click="setView('search')"
               >Search</a
             >
             <a title="Stake Apes" class="link-button" @click="setView('stake')"
@@ -128,7 +128,7 @@
           <IntroView v-if="showView === 'intro'" />
           <StakeView v-if="showView === 'stake'" />
           <SwapView v-if="showView === 'swap'" />
-          <GalleryView v-if="showView === 'gallery'" />
+          <Search v-if="showView === 'search'" />
           <MerchView v-if="showView === 'merch'" />
           <GovernanceView v-if="showView === 'governance'" />
           <BaycCollection v-if="showView === 'bayc'" />
@@ -152,7 +152,7 @@
   import IntroView from "../components/IntroView.vue";
   import StakeView from "../components/StakeView.vue";
   import SwapView from "../components/SwapView.vue";
-  import GalleryView from "../components/GalleryView.vue";
+  import Search from "../components/SearchView.vue";
   import MerchView from "../components/MerchView.vue";
   import GovernanceView from "../components/GovernanceView.vue";
 
@@ -166,7 +166,7 @@
 
   /* Init Pinia Store Values and Methods */
   const store = useStore();
-  const { account, accountNfts } = storeToRefs(store);
+  const { account } = storeToRefs(store);
 
   const showView = ref<string>("intro");
 

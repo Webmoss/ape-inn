@@ -181,7 +181,7 @@
         </div>
         <div v-if="searchResults" class="row token-list">
           <template v-for="token in searchResults" :key="token.token_id">
-            <SearchCard :token="token" />
+            <NftCard :token="token" />
           </template>
           <div v-if="loading" class="loading-bar">...loading</div>
         </div>
@@ -198,7 +198,7 @@
   import { useStore } from "../store";
 
   /* Components */
-  import SearchCard from "../components/SearchCard.vue";
+  import NftCard from "../components/NftCard.vue";
 
   /* Init Store Values and Methods */
   const store = useStore();
@@ -359,7 +359,7 @@
         console.log(
           "%c🦸🏻 NFT Port Search by Token Id : %s",
           stylesResults,
-          JSON.stringify(results, 0, 4)
+          JSON.stringify(results)
         );
 
         if (

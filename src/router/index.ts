@@ -7,14 +7,7 @@ const baseURL = "";
 
 const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
-    if (to.hash) {
-      return window.scrollTo({
-        top: document.querySelector(to.hash).offsetTop - 135,
-        behavior: "smooth",
-      });
-    } else {
-      return savedPosition || { top: 0, left: 0 };
-    }
+    return savedPosition || { top: 0, left: 0 };
   },
   history: createWebHistory(baseURL),
   routes: [

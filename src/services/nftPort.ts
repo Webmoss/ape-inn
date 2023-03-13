@@ -4,9 +4,9 @@ import { useStore } from "../store";
 const nftPortApiKey = import.meta.env.VITE_NFT_PORT_API_KEY;
 
 export default class nftPort {
-  constructor() {
-    this.endpoint = "https://api.nftport.xyz/v0/";
-  }
+  // constructor() {
+  //   this.endpoint = "https://api.nftport.xyz/v0/";
+  // }
 
   /**
    * NFT Port Search
@@ -38,7 +38,7 @@ export default class nftPort {
     console.log("Search page_number:", page_number);
     const options = {
       method: "GET",
-      url: this.endpoint + "search",
+      url: "https://api.nftport.xyz/v0/search",
       params: {
         text: text,
         filter_by_contract_address: filter_by_contract_address,
@@ -123,7 +123,7 @@ export default class nftPort {
 
     const options = {
       method: "POST",
-      url: this.endpoint + "duplicates/urls",
+      url: "https://api.nftport.xyz/v0/duplicates/urls",
       headers: {
         "Content-Type": "application/json",
         Authorization: nftPortApiKey,
@@ -226,7 +226,7 @@ export default class nftPort {
 
     const options = {
       method: "POST",
-      url: this.endpoint + "duplicates/tokens",
+      url: "https://api.nftport.xyz/v0/duplicates/tokens",
       headers: {
         "Content-Type": "application/json",
         Authorization: nftPortApiKey,
@@ -321,7 +321,7 @@ export default class nftPort {
     console.log("contract_address", contract_address);
     const options = {
       method: "GET",
-      url: this.endpoint + `nfts/${contract_address}`,
+      url: `https://api.nftport.xyz/v0/nfts/${contract_address}`,
       params: {
         chain: chain,
         include: include,
@@ -398,7 +398,7 @@ export default class nftPort {
     if (account_address !== "") {
       const options = {
         method: "GET",
-        url: this.endpoint + `accounts/${account_address}`,
+        url: `https://api.nftport.xyz/v0/accounts/${account_address}`,
         params: {
           contract_address: contract_address,
           continuation: continuation,
@@ -474,7 +474,7 @@ export default class nftPort {
 
     const options = {
       method: "GET",
-      url: this.endpoint + `nfts/${contract_address}/${token_id}`,
+      url: `https://api.nftport.xyz/v0/nfts/${contract_address}/${token_id}`,
       params: {
         chain: chain,
         refresh_metadata: refresh_metadata,

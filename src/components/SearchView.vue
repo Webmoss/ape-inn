@@ -2,13 +2,13 @@
   <div class="card">
     <div class="row">
       <div class="column width-100">
-        <h1>Ape Search</h1>
+        <h1>Search</h1>
         <SearchBar />
       </div>
     </div>
     <div class="row">
       <div class="column">
-        <h2 class="about-title">The Apecoin Search</h2>
+        <h2 class="about-title">Search Results</h2>
       </div>
     </div>
   </div>
@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
   /* Components */
-  import SearchBar from "../components/SearchBar.vue";
+  import SearchBar from "./SearchBar.vue";
 </script>
 
 <style lang="scss" scoped>
