@@ -2,18 +2,34 @@
   <div class="card">
     <div class="row">
       <div class="column width-40">
-        <h1>Apecoin Governance</h1>
+        <h1>Governance</h1>
         <p>
-          Stake, claim and browse your favourite Ape NFTs all in one place, stop
-          monkeying around ...
+          The ApeCoin community governs itself via the ApeCoin DAO, the
+          decentralized governance framework that supports the Ecosystem Fund.
+          The DAO follows a proposal process to vote on how the Ecosystem Fund
+          will be distributed by the APE Foundation to promote a diverse and
+          self-sustaining ecosystem.
         </p>
         <p>
-          The ape Inn offers Apecoin Governance - DAO tooling, dashboards,
-          analytics and so much more, make sure to check out our merch section
-          for some more monkey business.
+          This governance guide is an overview of the proposal process. It’s a
+          living document that will evolve and improve with the DAO community’s
+          input.
         </p>
         <div class="row">
-          <ConnectWalletButton />
+          <a
+            href="https://apecoin.com/governance"
+            title="Apecoin DAO"
+            class="link-button"
+            target="_blank"
+            >Governance</a
+          >
+          <a
+            href="https://snapshot.org/#/apecoin.eth"
+            title="Apecoin DAO"
+            class="link-button"
+            target="_blank"
+            >DAO</a
+          >
         </div>
       </div>
       <div class="column width-60 flex-end">
@@ -24,11 +40,11 @@
     </div>
     <div class="row">
       <div class="column">
-        <h2 class="about-title">The Apecoin Protocol</h2>
+        <h2 class="about-title">Membership</h2>
         <p>
-          ApeCoin is an ERC-20 governance and utility token used within the APE
-          ecosystem to empower a decentralized community building at the
-          forefront of web3.
+          Participating in idea submission, commentary, proposal submission, and
+          voting is restricted to ApeCoin DAO members. Holding ApeCoin is the
+          only requirement for membership in the DAO.
         </p>
       </div>
     </div>
@@ -47,7 +63,7 @@
   @import "../assets/styles/variables.scss";
   @import "../assets/styles/mixins.scss";
 
-  .ape-title {
+  .about-title {
     width: 100%;
     text-align: center;
   }

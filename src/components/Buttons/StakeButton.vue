@@ -1,22 +1,22 @@
 <template>
   <div class="connect-wallet-container">
-    <!-- 🦊 Metamask Not Connected -->
+    <!-- 🦊 Metamask Connected -->
     <button
-      v-if="!account"
+      v-if="account"
       :class="
         btnSize === 'large'
           ? 'connect-wallet-button'
           : 'connect-wallet-small-button'
       "
-      @click="connectWallet()"
+      @click="stakeTokens()"
     >
-      Connect
+      Stake
     </button>
   </div>
 </template>
 <script lang="ts" setup>
   import { storeToRefs } from "pinia";
-  import { useStore } from "../store";
+  import { useStore } from "../../store";
 
   defineProps({
     btnSize: {
@@ -29,7 +29,7 @@
   const store = useStore();
   const { account } = storeToRefs(store);
 
-  async function connectWallet() {
+  async function stakeTokens() {
     store.setLoading(true);
     try {
       const { ethereum } = window;
@@ -53,8 +53,8 @@
   }
 </script>
 <style lang="scss" scoped>
-  @import "../assets/styles/variables.scss";
-  @import "../assets/styles/mixins.scss";
+  @import "../../assets/styles/variables.scss";
+  @import "../../assets/styles/mixins.scss";
 
   .connect-wallet-container {
     display: flex;

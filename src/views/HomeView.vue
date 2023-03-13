@@ -4,7 +4,8 @@
       <section id="home">
         <div class="left">
           <h1>
-            <img src="../assets/images/favicon.png" class="intro-logo" />Ape Inn
+            <img src="../assets/images/favicon.png" class="intro-logo" />The Ape
+            Inn
           </h1>
           <ul class="collection-list">
             <li>
@@ -88,17 +89,20 @@
             <a title="Merch" class="link-button" @click="setView('merch')"
               >Merch</a
             >
-            <a
-              href="https://apecoin.com/governance"
-              title="Apecoin DAO"
-              class="link-button"
-              target="_blank"
+            <a title="Merch" class="link-button" @click="setView('governance')"
               >DAO</a
             >
           </p>
           <section id="footer">
             <div class="footer-menu">
               <nav class="footer-navbar">
+                <a
+                  href="https://apecoin.com/"
+                  alt="Apecoin"
+                  target="_blank"
+                  rel="noopener"
+                  >apecoin</a
+                >
                 <a
                   href=""
                   alt="EthGlobal Showcase"
@@ -131,6 +135,7 @@
           <Search v-if="showView === 'search'" />
           <MerchView v-if="showView === 'merch'" />
           <GovernanceView v-if="showView === 'governance'" />
+
           <BaycCollection v-if="showView === 'bayc'" />
           <MaycCollection v-if="showView === 'mayc'" />
           <BakcCollection v-if="showView === 'bakc'" />
@@ -280,7 +285,8 @@
 
         @include breakpoint($break-ssm) {
           flex-direction: column;
-          justify-content: center;
+          justify-content: flex-start;
+          overflow: visible;
         }
 
         .left {
@@ -294,7 +300,9 @@
 
           @include breakpoint($break-ssm) {
             width: 96%;
+            height: auto;
             padding: 2%;
+            overflow: visible;
           }
 
           h1 {
@@ -391,6 +399,7 @@
               img.list-logo {
                 width: 34px;
                 height: 34px;
+                object-fit: contain;
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
@@ -414,11 +423,13 @@
           align-content: flex-start;
           justify-content: flex-start;
           padding: 2% 2% 2% 1%;
-          // overflow: hidden;
+          overflow: scroll;
 
           @include breakpoint($break-ssm) {
             width: 96%;
             padding: 2%;
+            justify-content: flex-start;
+            overflow: visible;
           }
 
           .token-list {

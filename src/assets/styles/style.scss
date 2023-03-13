@@ -30,9 +30,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'IBMPlexSansBold', system-ui, sans-serif;
   margin-block-start: 0;
   margin-block-end: 0;
+  // text-transform: uppercase;
 }
 
-h1 { font-size: 46px; }
+h1 { font-size: 52px; line-height: 56px; }
 h2 { font-size: 36px; }
 h3 { font-size: 24px; }
 h4 { font-size: 22px; }
@@ -41,8 +42,8 @@ h6 { font-size: 18px; }
 
 p {
   color: $white;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 24px;
+  line-height: 28px;
   margin-bottom: 10px;
 }
 
@@ -51,7 +52,7 @@ p {
 
   img,
   svg {
-    width: 350px;
+    width: 400px;
     object-fit: cover;
     overflow: hidden;
     @include breakpoint($break-ssm) {
@@ -65,7 +66,7 @@ button,
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  height: 35px;
+  // height: 35px;
   font-size: 16px;
   font-weight: 600;
   color: $white;
@@ -107,6 +108,10 @@ button,
   padding: 0;
 }
 
+.flex-start {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 .flex-end {
   align-items: flex-end;
 }
@@ -120,40 +125,68 @@ button,
 }
 .width-90 {
   width: 90%;
+  @include breakpoint($break-ssm) {
+    width: 100%;
+  }
 }
 .width-80 {
   width: 80%;
+  @include breakpoint($break-ssm) {
+    width: 100%;
+  }
 }
 .width-70 {
   width: 70%;
+  @include breakpoint($break-ssm) {
+    width: 100%;
+  }
 }
 .width-60 {
   width: 60%;
+  @include breakpoint($break-ssm) {
+    width: 100%;
+  }
 }
 .width-50 {
   width: 50%;
+  @include breakpoint($break-ssm) {
+    width: 100%;
+  }
 }
 .width-40 {
   width: 40%;
+  @include breakpoint($break-ssm) {
+    width: 100%;
+  }
 }
 .width-30 {
   width: 30%;
+  @include breakpoint($break-ssm) {
+    width: 100%;
+  }
 }
 .width-20 {
   width: 20%;
-}
-.width-10 {
-  width: 10%;
+  @include breakpoint($break-ssm) {
+    width: 100%;
+  }
 }
 
+
 .card {
-  height: 96%;
-  padding: 2%;
+  height: 94%;
+  padding: 3% 3% 2% 3%;
   background: rgb(17, 16, 16);
   // background-image: $gradient;
+  border: 0.5px solid rgb(69, 73, 77);
   border-radius: 12px;
   margin: 0;
   overflow: scroll;
+  
+  @include breakpoint($break-ssm) {
+    height: auto;
+    overflow: visible;
+  }
 }
 
 .text-center {

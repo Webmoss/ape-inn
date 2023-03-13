@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
   /* Components */
-  import SearchBar from "./SearchBar.vue";
+  import SearchBar from "./Search/SearchBar.vue";
 </script>
 
 <style lang="scss" scoped>

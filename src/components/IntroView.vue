@@ -1,35 +1,29 @@
 <template>
   <div class="card">
     <div class="row">
-      <div class="column width-40">
-        <h1>Welcome <br />to the Ape Inn</h1>
+      <div class="column width-50">
+        <h1>The Ape Inn</h1>
         <p>
-          Stake and claim your $APE or browse all your favourite Apes, stop
-          monkeying around and visit the Ape Inn.
+          At <strong>The Ape Inn</strong> you can stake, claim or swap your
+          Apecoin tokens, browse all the great Apes and grab some sick merch,
+          stop monkeying around and ape in now!
         </p>
         <p>
-          The Ape Inn offers Apecoin Governance - DAO tooling, dashboards,
-          analytics and so much more, make sure to check out our merch section
-          for some more monkey business.
+          The Ape Inn offers a custom $APE dashboards to browse analytics and so
+          much more, make sure to check out our merch section for some more
+          monkey business.
         </p>
-        <div class="row">
-          <ConnectWalletButton />
+        <div class="row flex-start">
+          <ConnectButton />
+          <StakeButton />
+          <ClaimButton />
+          <SwapButton />
         </div>
       </div>
-      <div class="column width-60 flex-end">
+      <div class="column width-50 flex-end">
         <div class="graphic">
           <img src="../assets/images/Alexis_Ohanian.png" />
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="column">
-        <h2 class="about-title">The Apecoin Protocol</h2>
-        <p>
-          ApeCoin is an ERC-20 governance and utility token used within the APE
-          ecosystem to empower a decentralized community building at the
-          forefront of web3.
-        </p>
       </div>
     </div>
     <div class="row">
@@ -38,7 +32,7 @@
         <div class="ape-subtitle">
           An ode to the great apes that have come before us...
         </div>
-        <div class="row">
+        <div class="great-apes-row">
           <div class="great-apes">
             <img src="../assets/images/Maaria_Bajwa.png" />
             <h3>Maaria Bajwa</h3>
@@ -63,12 +57,10 @@
 
 <script lang="ts" setup>
   /* Components */
-  import ConnectWalletButton from "../components/ConnectWalletButton.vue";
-  // import { ref } from "vue";
-
-  // defineProps<{ msg: string }>();
-
-  // const count = ref(0);
+  import ConnectButton from "./Buttons/ConnectButton.vue";
+  import StakeButton from "./Buttons/StakeButton.vue";
+  import ClaimButton from "./Buttons/ClaimButton.vue";
+  import SwapButton from "./Buttons/SwapButton.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -88,6 +80,20 @@
     text-align: center;
     margin-bottom: 30px;
   }
+
+  .great-apes-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-start;
+    padding: 0;
+
+    @include breakpoint($break-ssm) {
+      flex-direction: column;
+    }
+  }
   .great-apes {
     width: 100%;
     display: flex;
@@ -99,7 +105,7 @@
     padding: 0;
 
     img {
-      width: 200px;
+      width: 180px;
       object-fit: contain;
       background: rgb(17, 16, 16);
       border: 1px solid rgb(69, 73, 77);

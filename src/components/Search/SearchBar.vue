@@ -195,10 +195,10 @@
 
   /* Import our Pinia Store & Refs */
   import { storeToRefs } from "pinia";
-  import { useStore } from "../store";
+  import { useStore } from "../../store";
 
   /* Components */
-  import NftCard from "../components/NftCard.vue";
+  import NftCard from "../NftCard.vue";
 
   /* Init Store Values and Methods */
   const store = useStore();
@@ -212,12 +212,12 @@
     { value: 5, label: "ethereum-testnet", text: "Ethereum Testnet" },
     { value: 137, label: "polygon", text: "polygon" },
     { value: 80001, label: "polygon-testnet", text: "Mumbai Testnet" },
-    { value: 10, label: "optimism", text: "optimism" },
-    { value: 69, label: "optimism-testnet", text: "Optimism Testnet" },
-    { value: 42161, label: "arbitrum", text: "arbitrum" },
-    { value: 421611, label: "arbitrum-testnet", text: "Arbitrum Testnet" },
-    { value: 43114, label: "avalanche", text: "avalanche" },
-    { value: 421611, label: "avalanche-testnet", text: "Arbitrum Testnet" },
+    // { value: 10, label: "optimism", text: "optimism" },
+    // { value: 69, label: "optimism-testnet", text: "Optimism Testnet" },
+    // { value: 42161, label: "arbitrum", text: "arbitrum" },
+    // { value: 421611, label: "arbitrum-testnet", text: "Arbitrum Testnet" },
+    // { value: 43114, label: "avalanche", text: "avalanche" },
+    // { value: 421611, label: "avalanche-testnet", text: "Arbitrum Testnet" },
   ]);
 
   /* Show Search Results Panel */
@@ -342,6 +342,7 @@
       console.log("tokenId:", tokenId.value);
       console.log("page_size:", page_size.value);
       console.log("page_number:", page_number.value);
+
       /* Token Id Search */
       try {
         const results = await store.searchNFTTokenId(
@@ -410,8 +411,8 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "../assets/styles/variables.scss";
-  @import "../assets/styles/mixins.scss";
+  @import "../../assets/styles/variables.scss";
+  @import "../../assets/styles/mixins.scss";
 
   section#search-bar {
     color: $black;
