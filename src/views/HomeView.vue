@@ -78,8 +78,8 @@
             <a title="Stake Apes" class="link-button" @click="setView('stake')"
               >Stake</a
             >
-            <a title="Claim" class="link-button" @click="setView('claim')"
-              >Claim</a
+            <a title="Swap" class="link-button" @click="setView('swap')"
+              >Swap</a
             >
           </p>
           <p>
@@ -128,7 +128,7 @@
         <div class="right">
           <IntroView v-if="showView === 'intro'" />
           <StakeView v-if="showView === 'stake'" />
-          <ClaimView v-if="showView === 'claim'" />
+          <SwapView v-if="showView === 'swap'" />
           <GalleryView v-if="showView === 'gallery'" />
           <MerchView v-if="showView === 'merch'" />
           <GovernanceView v-if="showView === 'governance'" />
@@ -152,7 +152,7 @@
   /* Components */
   import IntroView from "../components/IntroView.vue";
   import StakeView from "../components/StakeView.vue";
-  import ClaimView from "../components/ClaimView.vue";
+  import SwapView from "../components/SwapView.vue";
   import GalleryView from "../components/GalleryView.vue";
   import MerchView from "../components/MerchView.vue";
   import GovernanceView from "../components/GovernanceView.vue";
@@ -419,16 +419,6 @@
           @include breakpoint($break-ssm) {
             width: 96%;
             padding: 2%;
-          }
-
-          .row {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            align-content: center;
-            justify-content: center;
-            align-items: center;
-            padding: 0;
           }
 
           .token-list {

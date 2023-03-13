@@ -621,7 +621,7 @@
           border-radius: 30px;
           letter-spacing: 1px;
           font-size: 13px;
-          min-width: 400px;
+          min-width: 220px;
           padding: 11px 10px 9px;
           margin: 0 5px;
           text-align: center;
@@ -657,7 +657,7 @@
           border-radius: 30px;
           letter-spacing: 1px;
           font-size: 13px;
-          min-width: 220px;
+          min-width: 160px;
           padding: 11px 10px 9px;
           margin: 0 5px;
           text-align: center;
@@ -749,7 +749,7 @@
           border-radius: 30px;
           letter-spacing: 1px;
           font-size: 14px;
-          min-width: 70px;
+          width: 70px;
           padding: 10px;
           text-align: center;
           margin-right: 5px;
@@ -776,7 +776,7 @@
           border-radius: 30px;
           letter-spacing: 1px;
           font-size: 14px;
-          min-width: 70px;
+          width: 70px;
           padding: 10px;
           text-align: center;
           margin-right: 5px;

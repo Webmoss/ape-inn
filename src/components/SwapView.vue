@@ -2,7 +2,7 @@
   <div class="card">
     <div class="row">
       <div class="column width-40">
-        <h1>Apecoin Governance</h1>
+        <h1>Ape Swap Shop</h1>
         <p>
           Stake, claim and browse your favourite Ape NFTs all in one place, stop
           monkeying around ...

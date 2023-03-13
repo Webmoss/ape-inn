@@ -1,30 +1,39 @@
 <template>
   <div class="card">
-    <h1>Ape NFT</h1>
-    <SearchBar />
-    <p>
-      Our web3 dApp is your one stop Apecoin shop... our slick user interface
-      has you covered, so stop monkeying around and just ape in now!
-    </p>
-    <p>
-      Visit APE-inn for Apecoin Governance - DAO tooling, dashboards, analytics
-      and so much more, make sure to check out our merch section for some more
-      monkey business.
-    </p>
+    <div class="row">
+      <div class="column width-100">
+        <h1>Ape Search</h1>
+        <SearchBar />
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <h2 class="about-title">The Apecoin Search</h2>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
   /* Components */
   import SearchBar from "../components/SearchBar.vue";
-  // import { ref } from "vue";
-
-  // defineProps<{ msg: string }>();
-
-  // const count = ref(0);
 </script>
 
 <style lang="scss" scoped>
   @import "../assets/styles/variables.scss";
   @import "../assets/styles/mixins.scss";
+
+  .ape-title {
+    width: 100%;
+    text-align: center;
+  }
+
+  .ape-subtitle {
+    width: 100%;
+    color: $white;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+  }
 </style>
